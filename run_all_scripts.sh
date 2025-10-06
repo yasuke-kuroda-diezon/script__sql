@@ -1,12 +1,20 @@
 #!/bin/zsh
 
-# スクリプトのパスを設定
-SCRIPTS_DIR="./script_sql"
+# 実行順序は重要. 実行順序は変更しないこと.
 
-# 各スクリプトを順番に実行
-$SCRIPTS_DIR/export_sql.sh
-$SCRIPTS_DIR/copy_staging_to_local.sh
-$SCRIPTS_DIR/rename_db_user_for_local.sh
-$SCRIPTS_DIR/delete_local_sql.sh
-# $SCRIPTS_DIR/cat_local_sql.sh
-$SCRIPTS_DIR/import_sql.sh
+# application
+./script__sql/staging_application_export.sh
+./script__sql/copy_application_stg_to_local.sh
+./script__sql/rename_application_db_user_stg_to_local.sh
+./script__sql/local_application_delete.sh
+./script__sql/local_application_cat.sh # 空出力が期待値.
+./script__sql/local_application_import.sh
+
+# api gatewayはSTGからローカルにコピー不要. 
+# # gateway
+# ./script__sql/staging_gateway_export.sh
+# ./script__sql/copy_gateway_stg_to_local.sh
+# ./script__sql/rename_gateway_db_user_stg_to_local.sh
+# ./script__sql/local_gateway_delete.sh
+# ./script__sql/local_gateway_cat.sh # 空出力が期待値.
+# ./script__sql/local_gateway_import.sh
