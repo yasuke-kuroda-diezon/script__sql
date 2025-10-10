@@ -10,6 +10,9 @@
 ./script__sql/local_application_cat.sh # 空出力が期待値.
 ./script__sql/local_application_import.sh
 
+# ※以下のコメントアウトは外さないこと.
+# ※以下のコメントアウトを外して本スクリプト実行したら、ローカルDB壊れます.
+
 # api gatewayはSTGからローカルにコピー不要. 
 # # gateway
 # ./script__sql/staging_gateway_export.sh
